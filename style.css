@@ -17,10 +17,9 @@ body {
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
+    /* REMOVED flexbox here so the child sections can properly fill the screen height */
+    display: block; 
     background-color: black;
-    /* Using dvh (dynamic viewport height) fixes issues with mobile browser address bars */
     height: 100dvh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
@@ -30,18 +29,18 @@ body {
 .side, .about, .skills, .footer {
     width: 100%;
     min-height: 100dvh;
-    border: 1px solid #333; /* Darkened the border slightly so it's less harsh */
+    border: 1px solid #333;
     padding: 20px;
     border-radius: 7px;
     background-color: black;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* This forces vertical centering */
 }
 
 .side {
-    align-items: center;
+    align-items: center; /* This forces horizontal centering */
     text-align: center;
 }
 
@@ -98,7 +97,7 @@ body {
 .p1, .p2 {
     background-color: #1a1a1a;
     color: #fff;
-    flex: 1 1 300px; /* Allows cards to grow and shrink properly */
+    flex: 1 1 300px; 
     padding: 25px;
     border-radius: 15px;
     border: 1px solid #333;
@@ -127,6 +126,7 @@ body {
     font-size: 16px;
 }
 
+/* --- NAVIGATION BAR --- */
 .item {
     position: fixed;
     top: 50%;
@@ -184,7 +184,7 @@ body {
     margin: 0 15px;
     font-size: 18px;
     display: inline-block;
-    padding: 10px; /* Better touch targets on mobile */
+    padding: 10px; 
 }
 
 .social-links a:hover {
@@ -198,29 +198,38 @@ body {
         bottom: 0;
         right: 0;
         left: 0;
-        width: 100%;
+        width: 100vw; /* Forces it to exactly match screen width */
         transform: none;
         border-radius: 0;
         border: none;
         border-top: 1px solid gray;
         background-color: rgba(10, 10, 10, 0.95);
-        padding: 0; /* Reset padding to rely on the link tags */
+        padding: 0; /* Removed padding so content can fill perfectly */
     }
     
     .content {
         flex-direction: row;
         justify-content: space-around;
+        align-items: center;
         gap: 0;
-        padding: 5px 0; 
+        width: 100%;
+        height: 60px; /* Fixed height for the bar */
+    }
+
+    .content li {
+        width: 100%;
+        height: 100%;
     }
 
     .content a {
-        padding: 15px 20px; /* Makes it much easier to tap on a phone */
+        padding: 0;
+        width: 100%;
+        height: 100%; /* Makes the entire block tappable */
+        border-radius: 0;
     }
     
     .container {
-        /* Add padding at the bottom so the last section doesn't hide behind the navbar */
-        padding-bottom: 70px;
+        padding-bottom: 60px; /* Exactly matches nav bar height */
     }
     
     .side, .about, .skills, .footer {
@@ -236,6 +245,6 @@ body {
     }
 
     .pc {
-        flex-direction: column; /* Stacks projects on top of each other on mobile */
+        flex-direction: column; 
     }
 }
