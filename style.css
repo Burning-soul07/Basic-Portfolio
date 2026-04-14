@@ -20,7 +20,8 @@ body {
     display: flex;
     flex-direction: column;
     background-color: black;
-    height: 100vh;
+    /* Using dvh (dynamic viewport height) fixes issues with mobile browser address bars */
+    height: 100dvh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
@@ -28,8 +29,8 @@ body {
 
 .side, .about, .skills, .footer {
     width: 100%;
-    min-height: 100vh;
-    border: 1px solid gray;
+    min-height: 100dvh;
+    border: 1px solid #333; /* Darkened the border slightly so it's less harsh */
     padding: 20px;
     border-radius: 7px;
     background-color: black;
@@ -90,16 +91,14 @@ body {
 .pc {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
+    gap: 20px;
     width: 100%;
 }
 
 .p1, .p2 {
     background-color: #1a1a1a;
     color: #fff;
-    width: 100%;
-    max-width: 350px;
+    flex: 1 1 300px; /* Allows cards to grow and shrink properly */
     padding: 25px;
     border-radius: 15px;
     border: 1px solid #333;
@@ -164,11 +163,6 @@ body {
     background-color: rgb(28, 124, 250);
 }
 
-.item svg {
-    width: 24px;
-    height: 24px;
-}
-
 .footer {
     text-align: center;
     align-items: center;
@@ -189,42 +183,59 @@ body {
     text-decoration: none;
     margin: 0 15px;
     font-size: 18px;
+    display: inline-block;
+    padding: 10px; /* Better touch targets on mobile */
 }
 
 .social-links a:hover {
     text-decoration: underline;
 }
 
+/* --- MOBILE STYLES --- */
 @media (max-width: 768px) {
     .item {
         top: auto;
         bottom: 0;
         right: 0;
         left: 0;
+        width: 100%;
         transform: none;
         border-radius: 0;
-        border-left: none;
-        border-right: none;
-        border-bottom: none;
-        background-color: rgba(0, 0, 0, 0.9);
-        padding: 10px 0;
+        border: none;
+        border-top: 1px solid gray;
+        background-color: rgba(10, 10, 10, 0.95);
+        padding: 0; /* Reset padding to rely on the link tags */
     }
     
     .content {
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: space-around;
         gap: 0;
+        padding: 5px 0; 
+    }
+
+    .content a {
+        padding: 15px 20px; /* Makes it much easier to tap on a phone */
     }
     
     .container {
-        padding-bottom: 60px;
+        /* Add padding at the bottom so the last section doesn't hide behind the navbar */
+        padding-bottom: 70px;
     }
     
     .side, .about, .skills, .footer {
-        padding: 40px 20px;
+        padding: 30px 20px;
     }
     
     .hi {
         font-size: 24px;
+    }
+
+    .about h2, .skills h2, .footer h2 {
+        text-align: center;
+    }
+
+    .pc {
+        flex-direction: column; /* Stacks projects on top of each other on mobile */
     }
 }
