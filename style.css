@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* body::-webkit-scrollbar {
+    display: none;
+} */
+body {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+    background-color: black;
+    color: rgb(253, 253, 253);
+    font-family: Arial, sans-serif; 
+    
+}
+
+.container::-webkit-scrollbar { 
+  display: none; 
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap; 
+    margin-top: 0px; 
+    /* padding: 5px; */
+    background-color: rgb(66, 101, 255);
+    justify-content: space-between; 
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;;
+    
+}
+
+.side {
+    /* margin-top: 5px; */
+    width: 100%;
+    min-height: 100vh;
+    border: 1px solid gray;
+    top:98.5vh; 
+    padding: 10px;
+    border-radius: 7px;
+    background-color: black;
+    scroll-snap-align: start;
+}
+.hi {
+    position: relative;
+    top: 250px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+    text-shadow: 
+    0 0 2px #ff0000,
+    0 0 5px #00ff62,
+    0 0 10px #0066ff,
+    0 0 20px #f1f1f1;
+    transition: transform 0.2s ease-out;
+}
+.hi:hover {
+    animation: rgbCycle 0.5s linear forwards;
+    transform: scale(1.1);
+}
+@keyframes rgbCycle {
+    0% { color: rgb(67, 255, 255); }
+    33% { color: rgb(80, 191, 255); }
+    66% { color: rgb(95, 59, 255); }
+    100% { color: rgb(0, 0, 0); }
+}
+.item {
+    width: 5%; 
+    position: fixed;
+    top: 30px;
+    border-radius: 10px;
+    min-height: 90vh;
+    right: 10px;
+    border: 1px solid gray; 
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.about {
+    /* margin-top: 5px; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    width: 100%;
+    min-height: 99.5vh;
+    border: 1px solid gray;
+    border-radius: 7px;
+    background-color: black;
+    scroll-snap-align: start;
+    
+}
+.about h2{
+    text-align: start;
+    width: 100%;
+    margin: 0 20px 10px 20px;
+    transition: transform 0.3s ease-out;
+    color: rgb(253, 110, 134);
+} 
+.about h2:hover {
+    color: rgb(28, 124, 250);
+    transform: scale(1.01);
+}
+.about p {
+    text-align: start;
+    width: 100%;
+    padding: 15px;
+    margin: 0 20px 10px 20px;
+    margin: 20px;
+}
+.pc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.p1, .p2 {
+  background-color: #1a1a1a;
+  color: #fff;
+  width: 320px;
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.p1 h3, .p2 h3 {
+  margin-top: 0;
+  color: #00e6ff;
+}
+
+.p1:hover, .p2:hover {
+  transform: translateY(-10px);
+  border-color: #00e6ff;
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.6),
+    0 0 15px rgba(0, 230, 255, 0.6),
+    0 0 40px rgba(0, 230, 255, 0.3);
+}
+.skills {
+    /* margin-top: 5px; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    width: 100%;
+    min-height: 99.5vh;
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: black;
+    scroll-snap-align: start;
+}
+.skills ul {
+    list-style: none;
+}
+.skills h2{
+    text-align: start;
+    width: 100%;
+    margin: 0 20px 10px 20px;
+    transition: transform 0.3s ease-out;
+    color: rgb(253, 110, 134);
+} 
+.skills h2:hover {
+    color: rgb(28, 124, 250);
+    transform: scale(1.01);
+}
+.content {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+}
+
+.content a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    background-color: transparent; 
+    border-radius: 5px;
+}
+
+.content a:hover {
+    background-color: rgb(28, 124, 250);
+}
+.item svg {
+  width: 24px;
+  height: 24px;
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    border: 1px solid black; 
+    padding: 20px;
+    margin-top: 5px;
+    background-color: black;
+}
